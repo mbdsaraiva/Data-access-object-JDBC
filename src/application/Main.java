@@ -1,6 +1,9 @@
 package application;
 
+import java.util.Date;
+
 import module.entities.Department;
+import module.entities.Seller;
 
 public class Main {
 
@@ -10,6 +13,9 @@ public class Main {
 			
 			System.out.println(obj);
 			
+			Seller seller = new Seller(21, "Matheus", "matheus@gmail.com", new Date(), 3000.0, obj);
+			
+			System.out.println(seller);
 	}
 
 }
