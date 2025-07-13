@@ -6,9 +6,6 @@ This project focuses on exploring and implementing fundamental concepts of datab
 
 This project serves as a practical demonstration of how Java applications can interact with relational databases. It covers the essential steps for connecting to a database, executing SQL queries, and managing data through programmatic interfaces. The implementation emphasizes a structured approach to data access, laying the groundwork for more complex database operations and application architectures.
 
-
-
-
 ## 💻 Technologies and Concepts Used
 
 This project utilizes the following technologies and concepts for database interaction:
@@ -38,5 +35,25 @@ This project utilizes the following technologies and concepts for database inter
 
 *   **DAO (Data Access Object) Pattern**: A structural design pattern that abstracts and encapsulates all access to the data source. In this project, the DAO pattern is implemented manually for each entity (e.g., `ClientDao`, `ProductDao`, `OrderDao`), with interfaces defining the data access operations.
 
+## 🧱 Project Structure and Organization
+
+The project follows a modular and organized structure to promote clarity and maintainability. Key components include:
+
+- **Entity Classes**: Represent real-world objects like `Department` and `Seller` with attributes, constructors, getters/setters, and overridden `hashCode`, `equals`, and `toString` methods. These classes also implement `Serializable`.
+- **DAO Interfaces**: Define standard operations for each entity, such as `findById`, `findAll`, `insert`, `update`, and `delete`.
+- **JDBC Implementations**: Concrete classes (e.g., `SellerDaoJDBC`, `DepartmentDaoJDBC`) that implement the DAO interfaces using JDBC APIs.
+- **Factory Class**: `DaoFactory` is responsible for creating DAO instances, allowing for decoupled instantiation and potential extensibility.
+- **DB Utility Class**: A utility class in the `db` package for managing database connections and safely closing resources.
+- **Custom Exceptions**: Includes `DbException` and `DbIntegrityException` to handle SQL and integrity-related errors cleanly.
+
+## 🧪 Functional Highlights
+
+The application demonstrates key CRUD (Create, Read, Update, Delete) operations and features:
+
+- **Read Operations**: Retrieve individual records (`findById`), all records (`findAll`), and filtered results (`findByDepartment`) using SQL `SELECT` with inner joins and aliases.
+- **Create Operations**: Insert new records using `PreparedStatement` and retrieve generated keys with `getGeneratedKeys`.
+- **Update Operations**: Modify existing records using parameterized `UPDATE` statements.
+- **Delete Operations**: Safely delete records with integrity checks, including exception handling for foreign key constraints.
+- **Transaction Management**: Execute multiple operations in a single transaction using `setAutoCommit(false)`, `commit()`, and `rollback()` to ensure ACID compliance and error recovery.
 
 
